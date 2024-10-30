@@ -9,7 +9,6 @@ from dotenv import load_dotenv
 def run_bot():
     load_dotenv()
     TOKEN = os.getenv('discord_token')
-    PREFIX = os.getenv('prefix')
     intents = discord.Intents.default()
     intents.message_content = True
     intents.voice_states = True
@@ -54,7 +53,7 @@ def run_bot():
             return
 
 
-        if message.content.startswith("?"):
+        if message.content.startswith("!"):
             command, *args = message.content[1:].split()
             if command in commands_dict:
                 await commands_dict[command](message, client)
